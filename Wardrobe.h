@@ -13,28 +13,28 @@ class Wardrobe {
 
 private:
 
-    vector<Clothing> Clo;
+    vector<Clothing> my_clothing;
 
 public:
 
-    void Add_Clo(Clothing& a) {
-        Clo.push_back(a);
+    void add_clo(Clothing& a) {
+        my_clothing.push_back(a);
     }
-    void goOut() {
-        int n = 0;
+    void go_out() {
+        int count_of_types = 0;
 
         vector<int> count(eType->size());
 
-        for (int i = 0; i < Clo.size(); i++) {
-            count[Clo[i].type]++;
+        for (int i = 0; i < my_clothing.size(); i++) {
+            count[my_clothing[i].get_type()]++;
         }
         for (auto i : count)
         {
             if (i > 0)
-                n++;
+                count_of_types++;
         }
 
-        if (n >= 3) {
+        if (count_of_types >= 3) {
             cout << "The person want walk" << endl;
         }
         else {
@@ -42,8 +42,8 @@ public:
         }
     }
 
-    void Sort() {
-        sort(Clo.begin(), Clo.end(), [](Clothing& a, Clothing& b) { return a.size < b.size; });
+    void Sort() {//коли € м≥н€ю на маленьку букву м≥й контейнер типе, що забагато аргумент≥в
+        sort(my_clothing.begin(), my_clothing.end(), [](Clothing& a, Clothing& b) { return a.get_size() < b.get_size(); });
     }
 
 };
